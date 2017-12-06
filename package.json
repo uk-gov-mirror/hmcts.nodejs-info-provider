@@ -1,17 +1,9 @@
 {
   "name": "@hmcts/info-provider",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "description": "info-provider",
   "license": "MIT",
   "repository": "https://github.com/hmcts/nodejs-info-provider",
-  "author": {
-    "name": "",
-    "email": "",
-    "url": ""
-  },
-  "keywords": [
-    ""
-  ],
   "files": [
     "lib"
   ],
@@ -60,7 +52,7 @@
     "typescript": "^2.3.0"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.0.0"
   },
   "jest": {
     "transform": {
