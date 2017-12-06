@@ -1,9 +1,9 @@
 {
   "name": "@hmcts/info-provider",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "info-provider",
   "license": "MIT",
-  "repository": "",
+  "repository": "https://github.com/hmcts/nodejs-info-provider",
   "author": {
     "name": "",
     "email": "",
