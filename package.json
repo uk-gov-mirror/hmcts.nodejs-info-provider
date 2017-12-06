@@ -1,6 +1,6 @@
 {
   "name": "@hmcts/info-provider",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "info-provider",
   "license": "MIT",
   "repository": "https://github.com/hmcts/nodejs-info-provider",
@@ -22,7 +22,6 @@
     "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
     "lint": "tslint --project tsconfig.json --format verbose",
     "prebuildOnly": "yarn clean && yarn format && yarn lint && echo Using TypeScript && tsc --version",
-    "prepare": "yarn install && yarn build",
     "build": "tsc --pretty",
     "test": "jest",
     "coverage": "jest --coverage",
