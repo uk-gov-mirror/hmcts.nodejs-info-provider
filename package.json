@@ -21,7 +21,6 @@
     "clean": "rimraf lib && rimraf coverage",
     "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
     "lint": "tslint --project tsconfig.json --format verbose",
-    "prepublishOnly": "yarn build",
     "prebuildOnly": "yarn clean && yarn format && yarn lint && echo Using TypeScript && tsc --version",
     "build": "tsc --pretty",
     "test": "jest",
