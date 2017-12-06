@@ -22,7 +22,7 @@
     "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
     "lint": "tslint --project tsconfig.json --format verbose",
     "prebuildOnly": "yarn clean && yarn format && yarn lint && echo Using TypeScript && tsc --version",
-    "prepare": "yarn build",
+    "prepare": "yarn install && yarn build",
     "build": "tsc --pretty",
     "test": "jest",
     "coverage": "jest --coverage",
