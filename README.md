@@ -12,7 +12,6 @@ Typescript:
 ```ts
 import { InfoContributor, infoRequestHandler  } from '@hmcts/info-provider'
 
-
 express.Router()
   .get('/info', infoRequestHandler({
     info: {
@@ -29,12 +28,12 @@ express.Router()
 - Javascript -
 
 ```js
-const infoRequestHandler = require('@hmcts/info-provider').infoRequestHandler
+const { InfoContributor, infoRequestHandler } = require('@hmcts/info-provider')
 
 express.Router()
   .get('/info', infoRequestHandler({
     info: {
-      'fees-register': {url: 'https://fees-register.com/info'}
+      'fees-register': new InfoContributor('http://fees-register.com/info')
     },
     extraBuildInfo: {
       featureToggles: config.get('featureToggles'),
