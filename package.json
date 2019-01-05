@@ -24,7 +24,7 @@
     "bluebird": "^3.5.1",
     "express": "^4.16.2",
     "fs-extra": "^4.0.2",
-    "js-yaml": "^3.10.0",
+    "js-yaml": "^3.12.1",
     "lodash.mapvalues": "^4.6.0",
     "request-promise-native": "^1.0.5"
   },
