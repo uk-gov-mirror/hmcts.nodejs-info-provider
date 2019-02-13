@@ -51,9 +51,10 @@
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/@types/js-yaml/-/js-yaml-3.10.1.tgz#a4ddaf67fec34151e620cdbdd22e40b64217f577"
 
-"@types/lodash.mapvalues@^4.6.0":
-  version "4.6.3"
-  resolved "https://registry.yarnpkg.com/@types/lodash.mapvalues/-/lodash.mapvalues-4.6.3.tgz#71208ea7b08d7fc939b37c1922b8c7cc07af89b3"
+"@types/lodash.mapvalues@^4.6.5":
+  version "4.6.5"
+  resolved "https://registry.yarnpkg.com/@types/lodash.mapvalues/-/lodash.mapvalues-4.6.5.tgz#5fb14121fb366ee91ec3930d72436191b4392fe6"
+  integrity sha512-mIwA42NWW8n0aQh2VqYXm3cG0jOWDLnbf4kdkZ1NRFTOhkSV0Gq3PjSyt6POJkGQS8gbApXmXQ51fN1ckh6xZQ==
   dependencies:
     "@types/lodash" "*"
 
