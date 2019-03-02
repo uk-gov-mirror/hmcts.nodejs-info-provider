@@ -77,9 +77,10 @@
   dependencies:
     "@types/events" "*"
 
-"@types/node@^8.0.0":
-  version "8.0.53"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.53.tgz#396b35af826fa66aad472c8cb7b8d5e277f4e6d8"
+"@types/node@^11.10.1":
+  version "11.10.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.10.1.tgz#3798bc942c187a2935a49472db3c5227eb39cdfc"
+  integrity sha512-VzvYpjW6sm5PJlYBGXt+XFmYvrDS4XLtVykTS6d3yiOWpCLc+cYwSjp++lmVL7iw4V301NVonMFzcqe4AKFQYA==
 
 "@types/request-promise-native@^1.0.10":
   version "1.0.10"
