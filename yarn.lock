@@ -65,9 +65,10 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-2.0.0.tgz#5a7306e367c539b9f6543499de8dd519fac37a8b"
 
-"@types/nock@^8.2.1":
-  version "8.2.1"
-  resolved "https://registry.yarnpkg.com/@types/nock/-/nock-8.2.1.tgz#1fbe5bdecb943c109a778553fa4d2401cb9394b4"
+"@types/nock@^10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@types/nock/-/nock-10.0.0.tgz#08584a37447e61bfbe641a08c7d15310a08febd4"
+  integrity sha512-DJM4sOEUeGzqjDkMtCubuN8zQ9gUxzPC+WVMzK2X4q6Kc5pnRFWcm8gkk4JNsDs7Zs6jjVf+dNYbNOii8fzPLA==
   dependencies:
     "@types/node" "*"
 
