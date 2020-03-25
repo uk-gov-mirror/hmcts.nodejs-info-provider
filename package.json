@@ -33,7 +33,7 @@
     "@types/express": "^4.0.39",
     "@types/fs-extra": "^4.0.5",
     "@types/jest": "^21.1.8",
-    "@types/js-yaml": "^3.10.1",
+    "@types/js-yaml": "^3.12.3",
     "@types/lodash.mapvalues": "^4.6.0",
     "@types/nock": "^8.2.1",
     "@types/node": "^8.0.0",
