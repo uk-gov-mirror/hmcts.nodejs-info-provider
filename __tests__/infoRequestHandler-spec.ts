@@ -1,75 +1,101 @@
-import * as express from 'express'
-import * as nock from 'nock'
-import * as request from 'supertest'
+import * as express from 'express';
+import * as request from 'supertest';
 
-import { InfoConfig, InfoContributor, infoRequestHandler } from '../src'
-import { mockVersionFile } from '../src/__mocks__/versionFile'
+// tslint:disable-next-line:no-implicit-dependencies
+import { mock } from 'node:test';
 
-jest.mock('../src/versionFile')
+import { InfoConfig, InfoContributor, infoRequestHandler } from '../src';
+import { mockVersionFile } from '../src/__mocks__/versionFile';
 
-const app = express()
+jest.mock('../src/versionFile');
+
+const app = express();
 
 describe('infoRequestHandler', () => {
   test('should output just build if no checks', () => {
-
-    app.get('/info', infoRequestHandler(new InfoConfig({})))
+    app.get('/info', infoRequestHandler(new InfoConfig({})));
 
     return request(app)
       .get('/info')
-      .then(response => {
-        expect(response.status).toEqual(200)
-        expect(response.body).toEqual({ build: mockVersionFile })
-      })
-  })
+      .then((response) => {
+        expect(response.status).toEqual(200);
+        expect(response.body).toEqual({ build: mockVersionFile });
+      });
+  });
   test('should output checks with error if non existent url', () => {
+    mock.method(global, 'fetch', () => {
+      return Promise.resolve({
+        ok: false,
+        status: 400,
+        statusText: 'Error',
+        text: () => Promise.resolve('some text'),
+      });
+    });
 
-    app.get('/info-with-check-and-error', infoRequestHandler({
-      info: {
-        aDownstream: new InfoContributor('/I-do-not-exist')
-      }
-    }))
+    app.get(
+      '/info-with-check-and-error',
+      infoRequestHandler({
+        info: {
+          aDownstream: new InfoContributor(
+            'http://localhost:4551/I-do-not-exist'
+          ),
+        },
+      })
+    );
 
     return request(app)
       .get('/info-with-check-and-error')
-      .then(response => {
-        expect(response.status).toEqual(200)
-        expect(response.body.aDownstream.error).toEqual('Error calling /I-do-not-exist')
-        expect(response.body.aDownstream.errorStackTrace).toBeDefined()
-      })
-  })
+      .then((response) => {
+        expect(response.status).toEqual(200);
+        expect(response.body.aDownstream.error).toEqual(
+          'Error calling http://localhost:4551/I-do-not-exist'
+        );
+        expect(response.body.aDownstream.body).toBeDefined();
+      });
+  });
   test('should output checks', () => {
+    const mockInfoResponse = { build: { version: '1.0.1' } };
+    mock.method(global, 'fetch', () => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(mockInfoResponse),
+        status: 200,
+      });
+    });
 
-    const mockInfoResponse = { build: { version: '1.0.1' } }
-    nock('http://localhost:4551')
-      .get('/downstream-info')
-      .reply(200, mockInfoResponse)
-
-    app.get('/info-with-check', infoRequestHandler({
-      info: {
-        aDownstream: new InfoContributor('http://localhost:4551/downstream-info')
-      }
-    }))
+    app.get(
+      '/info-with-check',
+      infoRequestHandler({
+        info: {
+          aDownstream: new InfoContributor(
+            'http://localhost:4551/downstream-info'
+          ),
+        },
+      })
+    );
 
     return request(app)
       .get('/info-with-check')
-      .then(response => {
-        expect(response.status).toEqual(200)
-        expect(response.body.aDownstream).toEqual(mockInfoResponse)
-      })
-  })
+      .then((response) => {
+        expect(response.status).toEqual(200);
+        expect(response.body.aDownstream).toEqual(mockInfoResponse);
+      });
+  });
   test('should output extra build info', () => {
-
-    const extraBuildInfo = { featureToggle: { info: true } }
-    app.get('/info-with-extra-build-info', infoRequestHandler({
-      extraBuildInfo,
-      info: {}
-    }))
+    const extraBuildInfo = { featureToggle: { info: true } };
+    app.get(
+      '/info-with-extra-build-info',
+      infoRequestHandler({
+        extraBuildInfo,
+        info: {},
+      })
+    );
 
     return request(app)
       .get('/info-with-extra-build-info')
-      .then(response => {
-        expect(response.status).toEqual(200)
-        expect(response.body.extraBuildInfo).toEqual(extraBuildInfo)
-      })
-  })
-})
+      .then((response) => {
+        expect(response.status).toEqual(200);
+        expect(response.body.extraBuildInfo).toEqual(extraBuildInfo);
+      });
+  });
+});

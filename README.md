@@ -1,9 +1,5 @@
 # nodejs-info-provider
 
-[![Build Status](https://travis-ci.org/hmcts/nodejs-info-provider.svg?branch=master)](https://travis-ci.org/hmcts/nodejs-info-provider.svg?branch=master)  
-[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)  
-[![Greenkeeper badge](https://badges.greenkeeper.io/hmcts/nodejs-info-provider.svg)](https://greenkeeper.io/)
-
 ```bash
 $ yarn add @hmcts/info-provider
 ```

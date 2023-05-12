@@ -1,5 +1,8 @@
+import { Info } from './info';
+
 export class InfoConfig {
-  constructor (public readonly info: object,
-               public readonly extraBuildInfo?: object) {
-  }
+  constructor(
+    public readonly info: Info,
+    public readonly extraBuildInfo?: object
+  ) {}
 }
