@@ -1,17 +1,16 @@
 import * as express from 'express';
 import { InfoResponse } from './infoResponse';
-import mapValues = require('lodash.mapvalues');
 
 import { InfoConfig } from './infoConfig';
+import { NameWithResult } from './nameWithResult';
 import { loadVersionFile } from './versionFile';
+import { VersionInfo } from './versionInfo';
 
 export function infoRequestHandler(config: InfoConfig): express.RequestHandler {
   return (req: express.Request, res: express.Response) => {
-    const resolvedEntries = mapValues(config.info, (value) => value.call());
-
     // keep a mapping to the name with the resolved promise
-    const promises = Object.entries(resolvedEntries).map((result) => {
-      return result[1].then((resolved) => {
+    const promises = Object.entries(config.info).map((result) => {
+      return result[1].call().then((resolved) => {
         return {
           name: result[0],
           result: resolved,
@@ -20,12 +19,12 @@ export function infoRequestHandler(config: InfoConfig): express.RequestHandler {
     });
 
     Promise.all([loadVersionFile(), ...promises]).then((results) => {
-      const build = results.reverse().pop();
+      const build = results.reverse().pop() as VersionInfo;
       const json: InfoResponse = {
         build,
       };
-      // @ts-ignore
-      results.forEach((downstream: { name: string; result: object }) => {
+
+      (results as NameWithResult[]).forEach((downstream: NameWithResult) => {
         json[downstream.name] = downstream.result;
       });
 

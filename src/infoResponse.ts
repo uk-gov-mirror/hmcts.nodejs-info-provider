@@ -1,5 +1,6 @@
-export class InfoResponse {
-  build: any;
-  [key: string]: any;
-  extraBuildInfo?: any;
+import { VersionInfo } from './versionInfo';
+
+export interface InfoResponse {
+  build: VersionInfo;
+  [key: string]: object | undefined;
 }

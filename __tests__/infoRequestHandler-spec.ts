@@ -1,7 +1,6 @@
 import * as express from 'express';
 import * as request from 'supertest';
 
-// tslint:disable-next-line:no-implicit-dependencies
 import { mock } from 'node:test';
 
 import { InfoConfig, InfoContributor, infoRequestHandler } from '../src';
