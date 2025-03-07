@@ -1,6 +1,6 @@
 {
   "name": "@hmcts/info-provider",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "info-provider",
   "license": "MIT",
   "repository": "https://github.com/hmcts/nodejs-info-provider",
